@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const supabaseUrl = "https://ylqgjfufnaztduobbywf.supabase.co";
+        const supabasePassword = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlscWdqZnVmbmF6dGR1b2JieXdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjUwMDgsImV4cCI6MjA1NTAwMTAwOH0.irpw-IkWk6zEEDGYtk473VQT1TzYzuXZntK61C9dRiA";
+
+        const supabase = window.supabase.createClient(supabaseUrl, supabasePassword);
+    </script>
+    <style>
+        h1:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        1. onclick
+        2. id 부여한 다음에 queryselect -> addEventListener('click', function(){})
+     -->
+    <button onclick="usersSelect();"> USERS 조회</button>
+    <button onclick="ordersSelect()"> ORDERS 조회</button>
+    <button onclick="postSelect()">POST 조회</button>
+    <h1 style="cursor: pointer;" onclick="userToggle()">유저</h1>
+    <div id="users-div" class="content"></div>
+    <h1 style="cursor: pointer;" onclick="orderToggle()">주문</h1>
+    <div id="orders-div" class="content"></div>
+    <div>
+        이름<input type="text" id="name" /><br />
+        이메일<input type="text" id="email" />
+        <button id="input-btn-user"> USERS 입력</button>
+    </div>
+    <div>
+        상품명<input type="text" id="product_name" /><br />
+        상품가격<input type="text" id="price" />
+        <button id="input-btn-order"> ORDERS 입력</button>
+    </div>
+    <div>
+        <h1 style="cursor: pointer;" onclick="postToggle()">게시글</h1>
+        <div id="post-div" class="content"></div>
+        작성할 내용<br/>
+        <input type="text" name="post" id="post"/>
+        <button id="input-btn-post">작성완료</button>
+    </div>
+</body>
+
+</html>
+<style>
+    table {
+        width: 100%;
+    }
+
+    table,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+</style>
+<style>
+    .content {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .show {
+        height: auto;
+    }
+</style>
+<script>
+    function userToggle() {
+        document.querySelector('#users-div').classList.toggle('show');
+    }
+    function orderToggle() {
+        document.querySelector('#orders-div').classList.toggle('show');
+    }
+    function postToggle() {
+        document.querySelector('#post-div').classList.toggle('show');
+    }
+</script>
+<script src="users.js"></script>
+<script src="orders.js"></script>
+<script src="post.js"></script>

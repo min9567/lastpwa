@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id = fruit>
+      <li class="apple">Apple</li>
+      <li class="banana">Banana</li>
+      <li class="orange">Orange</li>
+    </ul>
+    <script>
+        const $li = document.querySelector(".apple");
+
+        console.log($li.matches("#fruit>.apple"));
+        console.log($li.matches("#fruit>.banana"));
+    </script>
+  </body>
+</html>

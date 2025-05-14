@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        const supabaseUrl = "https://zgrjjnifqoactpuqolao.supabase.co";
+        const supabasePassword = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpncmpqbmlmcW9hY3RwdXFvbGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEyNDc0NTgsImV4cCI6MjA1NjgyMzQ1OH0._Vl-6CRKdMjeDRyNoxlfect7sgusZ7L0N5OYu0a5hT0";
+
+        const supabase = window.supabase.createClient(supabaseUrl, supabasePassword);
+
+        // 브라우저 호스트객체 document, lacation
+        // console.log(location);
+        const params = new URLSearchParams(location.search);
+        const pageNum = params.get('pageNum') ?? '1';
+
+        const res = await supabase.from('review').select('*');
+        console.log(res.data.length);
+
+
+        const maxPage = res.data.length / 5;
+        
+        console.log(res.data.length % 5 > 0 ? 1 : 0);
+        console.log(maxPage)
+
+        const pageHtml = "";
+        for(let i = 1; i < maxPage + 1; i++){
+            pageHtml = pageHtml + `<a herf="?pageNum=${i}">${i}</a>`;
+        }
+
+        document.querySelector('#page-div').innerHTML = `
+        <a href="?pageNum=1">1</a>
+        <a href="?pageNum=2">2</a>
+        <a href="?pageNum=3">3</a>
+        <a href="?pageNum=4">4</a>
+        `;
+
+    </script>
+</head>
+
+<body>
+    <div id="page-div">
+        <a href="?pageNum=1">1</a>
+        <a href="?pageNum=2">2</a>
+        <a href="?pageNum=3">3</a>
+    </div>
+</body>
+
+</html>

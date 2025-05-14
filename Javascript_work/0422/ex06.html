@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <button id="button1">튼1</button>
+      <button id="button2">튼2</button>
+      <button id="button3">튼3</button>
+    </div>
+    <script>
+        document.querySelector('#container').onclick = function() {
+            console.log('container');
+        }
+
+        document.querySelector('#button1').onclick = function(e) {
+            e.stopPropagation(); // 부모에 적용된 이벤트를 막음.
+            console.log('button1');
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="pp"></p>
+    <script>
+      let test = "성공";
+      const $pp = document.getElementById("pp");
+      const get = (url) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+          test = "성공적";
+          console.log(xhr);
+          if (xhr.status === 200) {
+            // response 에 있는 json 문자열을 object 객체로 바꿈
+            // textContent 속성은 html이 그냥 문자열 그대로 출력됨.
+            // innerHTML은 html 태그 정상 작동
+            const result = xhr.response.replaceAll(",", ",<br/>");
+            $pp.innerHTML = result;
+            return result;
+            // $pp.textContent = xhr.response;
+          }
+        };
+      };
+
+      const ret = get("https://6809e0571f1a52874cde2b14.mockapi.io/todos/1");
+      console.log('test', test);
+      console.log("ret",tet)
+    </script>
+  </body>
+</html>
