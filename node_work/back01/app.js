@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const cors = require("cors");
 const pool = require("./db");
 const express = require("express"); // http 모듈 확장한 프레임워크
 const path = require("path"); // 경로관리 모듈
@@ -15,6 +16,8 @@ const cookieParser = require("cookie-parser");
 console.log(process.env.COOKIE_SECRET);
 
 const app = express();
+
+app.use(cors());
 
 // dev 개발단계, combined 실제운영 배포환경에서 많이씀
 // app.use(morgan("combined"));
