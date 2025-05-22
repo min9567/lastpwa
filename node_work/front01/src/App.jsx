@@ -10,7 +10,7 @@ function App() {
     const getUsers = async (event) => {
         // console.log(event);
 
-        const result = await axios.get('https://front01-xr14ip6xf-noh-jin-uks-projects.vercel.app/')
+        const result = await axios.get('https://port-0-lastpwa-manaet8lcf91182f.sel4.cloudtype.app/')
         const {data, status} = result;
 
         setUsers(data);
