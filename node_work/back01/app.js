@@ -1,12 +1,14 @@
 require("dotenv").config();
 
 const cors = require("cors");
+
 const pool = require("./db");
+const { supabase } = require("./supadb")
 const express = require("express"); // http 모듈 확장한 프레임워크
 const path = require("path"); // 경로관리 모듈
 const morgan = require("morgan"); // 서버 접속 기록 남기는 모듈
 
-// 프로튼가 직접 보내줘야 서버에서 받을수 잇음
+// 프로트가 직접 보내줘야 서버에서 받을수 잇음
 // req.body => { name : "홍길동" }
 // req.query => localhost:8080?aa=10&b=20
 //application => cookie > 자동으로 요청할때 날아감
@@ -35,6 +37,15 @@ app.use((req, res, next) => {
   // console.log(req.query);
   console.log("모든 요청은 여기 들렸다가 진행된다.");
   next();
+});
+
+app.get("/supauser", async (req, res, next) => {
+  // console.log(supabase);
+  const {data, error} = await supabase.from('users').select();
+  console.log('data', data);
+  console.log('error', error);
+
+  res.json({ message: "피고나다", data });
 });
 
 app.get("/setCoo", (req, res, next) => {

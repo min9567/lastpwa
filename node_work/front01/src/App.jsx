@@ -7,10 +7,13 @@ function App() {
     const [users, setUsers]
         // = useState([{'id': '홍길동', 'password': '1234'}]);
         = useState(dbusers);
+
+    const [supaUsers, setsupaUsers] = useState(dbusers);
+
     const getUsers = async (event) => {
         // console.log(event);
 
-        const result = await axios.get('https://port-0-lastpwa-manaet8lcf91182f.sel4.cloudtype.app/')
+        const result = await axios.get('http://localhost:8080')
         const {data, status} = result;
 
         setUsers(data);
@@ -20,6 +23,12 @@ function App() {
 
     }
 
+    const getSupaUsers = async (event) => {
+        const {data: {data, message}} = await axios.get('http://localhost:8080/supauser')
+        console.log(data);
+        console.log(message);
+        setsupaUsers(data);
+    };
     return (
         <>
             <div>
@@ -27,7 +36,7 @@ function App() {
                     안녕
                 </h1>
                 {
-                    users.map(user =>
+                    users && users.map(user =>
                         (
                             <div key={user.id}>
                                 <div>{user.id}</div>
@@ -37,11 +46,29 @@ function App() {
                     )
                 }
                 <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 focus:outline-none"
+                    className="mr-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 focus:outline-none"
                     onClick={(event) => {
                         getUsers(event);
-                    }}>불러오기
+                    }}>mariadb불러오기
                 </button>
+                <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 focus:outline-none"
+                    onClick={(event) => {
+                        getSupaUsers(event);
+                    }}>supadb불러오기
+                </button>
+                {
+                    supaUsers && supaUsers.map(user =>
+                        (
+                            <div key={user.id}>
+                                <div>{user.email}</div>
+                                <div>{user.name}</div>
+                                <div>{user.password}</div>
+                                <div>{user.created_at}</div>
+                            </div>
+                        )
+                    )
+                }
             </div>
         </>
     )
