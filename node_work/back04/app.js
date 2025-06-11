@@ -33,6 +33,8 @@ app.use(
 );
 
 app.use(morgan("dev"));
+
+// req 쿼리만듬
 app.use(express.json(), express.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -75,3 +77,29 @@ const upload = multer({
   limits: { fileSize: 100 * 1024 * 1024 },
 });
 /*미들웨어 장착 끝*/
+
+app.get("/", (req, res, next) => {
+  console.log("기본적인 설정 종료");
+  //   res.render("index");
+  res.render("index", { title: "타이틀 제목" });
+});
+
+app.post("/upload", upload.single("image"), (req, res, next) => {
+  console.log("업로드 됨");
+  res.json({
+    msg: "upload success",
+    filename: req.file.originalname,
+    path: req.file.path,
+  });
+});
+
+app.use((err, req, res, next) => {
+  console.log("에러 미들웨어 동작");
+  console.error(err);
+  console.error(err.message);
+  res.send(err.toString());
+});
+
+app.listen(app.get("port"), () => {
+  console.log(`서버 ${app.get("port")}시작`);
+});
