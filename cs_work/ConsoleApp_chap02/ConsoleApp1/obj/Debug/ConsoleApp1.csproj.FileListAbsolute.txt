@@ -1,0 +1,8 @@
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+E:\lastpwa\cs_work\ConsoleApp_chap02\ConsoleApp1\obj\Debug\ConsoleApp1.exe.config
