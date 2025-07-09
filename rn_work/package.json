@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@react-navigation/elements": "^2.5.2",
+    "axios": "^1.10.0"
+  }
+}
