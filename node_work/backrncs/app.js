@@ -47,3 +47,6 @@ app.use("/users", usersRouter);
 app.listen(3030, () => {
     console.log("Server started on port 3030");
 })
+
+
+https://port-0-backrncs-manaet8lcf91182f.sel4.cloudtype.app/users
