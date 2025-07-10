@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-require('dotenv').config(); // process env에 설정한걸 갖옴
+
+
+// require('dotenv').config(); // process env에 설정한걸 갖옴
 
 const mongo_url = process.env.MONGO_URL;
 

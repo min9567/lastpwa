@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../schemas/users");
 
+console.log(User)
+
 router.post("/register", async (req, res, next) => {
 try {
     const { nickname, email, password } = req.body;
@@ -22,6 +24,15 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        // supabase.from('users').delete().eq()
+        const deleted = await User.findByIdAndDelete(id);
+        return res.json(deleted);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+})
 
 module.exports = router;
